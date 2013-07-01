@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<foo id="Foo1">
+	<bar id="Bar1">
+		<listOfThings>
+			<place>Kitchen</place>
+			<thing>Dishwasher
+				<size>Huge</size>
+			</thing>
+			<thing>Mop</thing>
+		</listOfThings>
+	</bar>
+	<bar id="Bar2">
+		<listOfThings>
+			<thing>LooRoll
+				<size>Standard</size>
+			</thing>
+			<place>Toilet</place>
+		</listOfThings>
+	</bar>
+</foo>

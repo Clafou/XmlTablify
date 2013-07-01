@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Transform PrintStatusNodeCount="10" >
+	<Table Output="table1.txt" RowSelect="/foo/bar/listOfThings/thing">
+		<Column Name="FooId" Select="/foo/@id" />
+		<Column Name="BarId" Select="/foo/bar/@id" />
+		<Column Name="Size" Select="/foo/bar/listOfThings/thing/size" />
+		<Column Name="Thing" Select="/foo/bar/listOfThings/thing" />
+	</Table>
+    <Table Output="table2.txt" RowSelect="/foo/bar">
+        <Column Name="id" Select="/foo/bar/@id" />
+        <Column Name="place" Select="/foo/bar/listOfThings/place" />
+    </Table>
+</Transform>
+
