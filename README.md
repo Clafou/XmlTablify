@@ -10,7 +10,7 @@ It looks for specific rows in the XML document, and captures text elements or at
 
 Build the executable then run the following command:
 
-XmlTablify <xmlFileToParse> <configFile>
+    XmlTablify <xmlFileToParse> <configFile>
 
 A sample config files can be found under TestFiles/Config.xml.
 
