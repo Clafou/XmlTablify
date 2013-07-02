@@ -34,11 +34,13 @@ namespace XmlTablify
 
         public Scope EndTag()
         {
-            var column = _job.GetCaptureColumn(_currentPath);
-            if (column != null)
+            if (!String.IsNullOrEmpty(_text))
             {
-                // The text needs to be captured
-                _captures[column.Name] = column.Capture(_text);
+                var column = _job.GetCaptureColumn(_currentPath);
+                if (column != null)
+                {
+                    _captures[column.Name] = column.Capture(_text);
+                }
             }
 
             if (_inRow && (!_parent._inRow))
@@ -52,12 +54,14 @@ namespace XmlTablify
 
         public Scope Attribute(string name, string value)
         {
-            var attributePath = _currentPath + "/@" + name;
-            var column = _job.GetCaptureColumn(attributePath);
-            if (column != null)
+            if (!String.IsNullOrEmpty(value))
             {
-                // The attributes needs to be captured
-                _captures[column.Name] = column.Capture(value);
+                var attributePath = _currentPath + "/@" + name;
+                var column = _job.GetCaptureColumn(attributePath);
+                if (column != null)
+                {
+                    _captures[column.Name] = column.Capture(value);
+                }
             }
             return this;
         }
