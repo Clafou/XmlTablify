@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Xml.Serialization;
 using System.Linq;
 
@@ -38,7 +39,10 @@ namespace XmlTablify.Config
                         _disposables.Add(textWriter);
                     }
 
-                    Jobs.Add(new Job(table.Output, table.RowSelect, table.Columns.ToDictionary(x => x.Select, x => x.Name), textWriter));
+                    Jobs.Add(new Job(table.Output,
+                                     table.RowSelect,
+                                     table.Columns.ToDictionary(x => x.Select, x => new XmlTablify.Column(x)),
+                                     textWriter));
                 }
             }
         }

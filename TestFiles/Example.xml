@@ -5,6 +5,7 @@
 			<place>Kitchen</place>
 			<thing>Dishwasher
 				<size>Huge</size>
+                <code>IgnoreThis{TakeThis}IgnoreThisToo</code>
 			</thing>
 			<thing>Mop</thing>
 		</listOfThings>

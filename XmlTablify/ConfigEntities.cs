@@ -32,6 +32,9 @@ namespace XmlTablify.Config
 
         [XmlAttribute("Select")]
         public string Select { get; set; }
+
+        [XmlAttribute("Match")]
+        public string Match { get; set; }
     }
 }
 

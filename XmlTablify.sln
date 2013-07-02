@@ -3,6 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlTablify", "XmlTablify\XmlTablify.csproj", "{A863A11A-9224-4B53-8B4A-FE7C420E24E3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestFiles", "TestFiles", "{E3402D8A-9CC8-42D3-9B59-BE5C729A3713}"
+	ProjectSection(SolutionItems) = preProject
+		TestFiles\Config.xml = TestFiles\Config.xml
+		TestFiles\Example.xml = TestFiles\Example.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -13,6 +19,8 @@ Global
 		{A863A11A-9224-4B53-8B4A-FE7C420E24E3}.Debug|x86.Build.0 = Debug|x86
 		{A863A11A-9224-4B53-8B4A-FE7C420E24E3}.Release|x86.ActiveCfg = Release|x86
 		{A863A11A-9224-4B53-8B4A-FE7C420E24E3}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = XmlTablify\XmlTablify.csproj

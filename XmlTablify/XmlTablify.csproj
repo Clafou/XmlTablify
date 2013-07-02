@@ -46,12 +46,9 @@
     <Compile Include="Writer.cs" />
     <Compile Include="ConfigEntities.cs" />
     <Compile Include="ConfigParser.cs" />
+    <Compile Include="Column.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <None Include="TestFiles\Example.xml" />
-    <None Include="TestFiles\Config.xml" />
-  </ItemGroup>
   <ItemGroup>
     <Folder Include="TestFiles\" />
   </ItemGroup>

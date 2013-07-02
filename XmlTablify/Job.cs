@@ -1,31 +1,26 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace XmlTablify
 {
     public class Job
     {
         private string _rowScope;
-        private Dictionary<string, string> _capturePathToName;
+        private Dictionary<string, Column> _capturePathToColumn;
 
         public String Name { get; private set; }
         public Writer Writer { get; private set; }
 
-        public Job(string name, string rowScope, Dictionary<string, string> capturePathToName, TextWriter textWriter)
+        public Job(string name, string rowScope, Dictionary<string, Column> capturePathToColumn, TextWriter textWriter)
         {
             _rowScope = rowScope;
-            _capturePathToName = capturePathToName;
-            Name = name;
-            Writer = new Writer(this.ColumnNames, textWriter);
-        }
+            _capturePathToColumn = capturePathToColumn;
 
-        public IEnumerable<string> ColumnNames
-        {
-            get
-            {
-                return _capturePathToName.Values;
-            }
+            Name = name;
+            List<string> columnNames = capturePathToColumn.Select(x => x.Value.Name).ToList();
+            Writer = new Writer(columnNames, textWriter);
         }
 
         public bool IsRowScope(string path)
@@ -33,11 +28,11 @@ namespace XmlTablify
             return _rowScope.Equals(path);
         }
 
-        public String GetCaptureName(string path)
+        public Column GetCaptureColumn(string path)
         {
-            if (_capturePathToName.ContainsKey(path))
+            if (_capturePathToColumn.ContainsKey(path))
             {
-                return _capturePathToName[path];
+                return _capturePathToColumn[path];
             }
             return null;
         }
