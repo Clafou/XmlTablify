@@ -16,6 +16,7 @@
 				<size>Standard</size>
 			</thing>
 			<place>Toilet</place>
+			<place>Store</place>
 		</listOfThings>
 	</bar>
 </foo>

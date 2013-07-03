@@ -39,7 +39,7 @@ namespace XmlTablify
                 var column = _job.GetCaptureColumn(_currentPath);
                 if (column != null)
                 {
-                    _captures[column.Name] = column.Capture(_text);
+                    _captures.Append(column.Name, column.Capture(_text));
                 }
             }
 
@@ -60,7 +60,7 @@ namespace XmlTablify
                 var column = _job.GetCaptureColumn(attributePath);
                 if (column != null)
                 {
-                    _captures[column.Name] = column.Capture(value);
+                    _captures.Append(column.Name, column.Capture(value));
                 }
             }
             return this;
@@ -70,6 +70,20 @@ namespace XmlTablify
         {
             _text += text.Trim();
             return this;
+        }
+    }
+
+    public static class AppendExtension
+    {
+        private const string Separator = "|";
+
+        public static void Append(this Dictionary<string, string> d, string key, string value)
+        {
+            if (d.ContainsKey(key))
+            {
+                value = d[key] + Separator + value;
+            }
+            d[key] = value;
         }
     }
 }
