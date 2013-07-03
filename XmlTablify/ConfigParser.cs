@@ -39,9 +39,19 @@ namespace XmlTablify.Config
                         _disposables.Add(textWriter);
                     }
 
+                    Dictionary<string, List<XmlTablify.Column>> capturePathToColumns = new Dictionary<string, List<XmlTablify.Column>>();
+                    foreach (var column in table.Columns)
+                    {
+                        if (!capturePathToColumns.ContainsKey(column.Select))
+                        {
+                            capturePathToColumns[column.Select] = new List<XmlTablify.Column>();
+                        }
+                        capturePathToColumns[column.Select].Add(new XmlTablify.Column(column));
+                    }
+
                     Jobs.Add(new Job(table.Output,
                                      table.RowSelect,
-                                     table.Columns.ToDictionary(x => x.Select, x => new XmlTablify.Column(x)),
+                                     capturePathToColumns,
                                      textWriter));
                 }
             }

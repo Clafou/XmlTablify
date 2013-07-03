@@ -5,7 +5,8 @@
 		<Column Name="BarId" Select="/foo/bar/@id" />
 		<Column Name="Size" Select="/foo/bar/listOfThings/thing/size" />
 		<Column Name="Thing" Select="/foo/bar/listOfThings/thing" />
-        <Column Name="Code" Select="/foo/bar/listOfThings/thing/code" Match="{(.+)}" />
+        <Column Name="CodePt1" Select="/foo/bar/listOfThings/thing/code" Match="(.+)_.+" />
+        <Column Name="CodePt2" Select="/foo/bar/listOfThings/thing/code" Match=".+_(.+)" />
 	</Table>
     <Table Output="table2.txt" RowSelect="/foo/bar">
         <Column Name="id" Select="/foo/bar/@id" />

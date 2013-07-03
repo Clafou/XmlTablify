@@ -8,18 +8,19 @@ namespace XmlTablify
     public class Job
     {
         private string _rowScope;
-        private Dictionary<string, Column> _capturePathToColumn;
+        private Dictionary<string, List<Column>> _capturePathToColumn;
+        private readonly IList<Column> _noColumns = new List<Column>().AsReadOnly();
 
         public String Name { get; private set; }
         public Writer Writer { get; private set; }
 
-        public Job(string name, string rowScope, Dictionary<string, Column> capturePathToColumn, TextWriter textWriter)
+        public Job(string name, string rowScope, Dictionary<string, List<Column>> capturePathToColumns, TextWriter textWriter)
         {
             _rowScope = rowScope;
-            _capturePathToColumn = capturePathToColumn;
+            _capturePathToColumn = capturePathToColumns;
 
             Name = name;
-            List<string> columnNames = capturePathToColumn.Select(x => x.Value.Name).ToList();
+            List<string> columnNames = capturePathToColumns.SelectMany(x => x.Value.Select(y => y.Name)).ToList();
             Writer = new Writer(columnNames, textWriter);
         }
 
@@ -28,13 +29,13 @@ namespace XmlTablify
             return _rowScope.Equals(path);
         }
 
-        public Column GetCaptureColumn(string path)
+        public IList<Column> GetCaptureColumns(string path)
         {
             if (_capturePathToColumn.ContainsKey(path))
             {
                 return _capturePathToColumn[path];
             }
-            return null;
+            return _noColumns;
         }
     }
 }

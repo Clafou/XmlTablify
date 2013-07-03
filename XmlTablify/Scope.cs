@@ -36,8 +36,7 @@ namespace XmlTablify
         {
             if (!String.IsNullOrEmpty(_text))
             {
-                var column = _job.GetCaptureColumn(_currentPath);
-                if (column != null)
+                foreach (Column column in _job.GetCaptureColumns(_currentPath))
                 {
                     _captures.Append(column.Name, column.Capture(_text));
                 }
@@ -57,8 +56,7 @@ namespace XmlTablify
             if (!String.IsNullOrEmpty(value))
             {
                 var attributePath = _currentPath + "/@" + name;
-                var column = _job.GetCaptureColumn(attributePath);
-                if (column != null)
+                foreach (Column column in _job.GetCaptureColumns(attributePath))
                 {
                     _captures.Append(column.Name, column.Capture(value));
                 }
